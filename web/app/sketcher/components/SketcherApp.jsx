@@ -9,11 +9,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import SketcherOperationWizard from "./SketcherOperationWizard";
 import {Scope} from "./Scope";
 import {SketcherToolbar} from "./SketcherToolbar";
-import {sketcherRightToolbarConfig, sketcherTopToolbarConfig} from "../uiConfig";
+import {sketcherRightToolbarConfig, sketcherTopToolbarConfig, sketcherQuotePanelConfig} from "../uiConfig";
 import {SketchManager} from "./SketchManager";
 import {ExportDialog} from "./ExportDialog";
 import {SketcherPropertiesView} from "./SketcherPropertiesView";
 import {SketcherDimensionView} from "./SketcherDimensionsView";
+import {SketcherQuoteView} from "./SketcherQuoteView";
 import {SketcherTerminal} from "./TerminalView";
 
 import {SketcherAppContext} from './SketcherAppContext';
@@ -40,6 +41,10 @@ export function SketcherApp({applicationContext}) {
       {ReactDOM.createPortal(
         <Scope><SketcherToolbar actions={sketcherRightToolbarConfig}/></Scope>,
         document.getElementById('right-toolbar')
+      )}
+      {ReactDOM.createPortal(
+        <Scope><SketcherQuoteView /></Scope>,
+        document.getElementById('quote-panel')
       )}
       {ReactDOM.createPortal(
         <Scope><SketcherToolbar actions={sketcherTopToolbarConfig} horizontal compact/></Scope>,

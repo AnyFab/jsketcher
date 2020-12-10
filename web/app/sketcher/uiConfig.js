@@ -7,6 +7,10 @@ import generalToolActions from "./actions/generalToolActions";
 
 export const sketcherRightToolbarConfig = constraintGlobalActions.map(a => a.id);
 
+export const sketcherQuotePanelConfig = [
+"test123test123"
+]
+
 export const sketcherTopToolbarConfig = [
   ...commonActions.map(a => a.id),
   ...generalToolActions.map(a => a.id),
