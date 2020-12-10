@@ -1,15 +1,10 @@
 import React from 'react';
-import NumberControl from "ui/components/controls/NumberControl";
 import {useStreamWithUpdater} from "ui/effects";
-import RadioButtons, {RadioButton} from "ui/components/controls/RadioButtons";
 import Stack from "ui/components/Stack";
 import Label from "ui/components/controls/Label";
 import Field from "ui/components/controls/Field";
 
 export function SketcherQuoteView() {
-
-  const [dimScale, setDimScale] = useStreamWithUpdater(ctx => ctx.viewer.streams.dimScale);
-  const [addingMode, setAddingMode] = useStreamWithUpdater(ctx => ctx.viewer.streams.addingRoleMode);
 
   return <Stack >
     <Field >
@@ -17,16 +12,24 @@ export function SketcherQuoteView() {
     </Field>
     <Field >
       <Label>Material</Label>
-      <RadioButtons >
-        <RadioButton value='birch ply' />
-        <RadioButton value='stainless steel' />
-        <RadioButton value='aluminium' />
-        <RadioButton value='acrylic' />
-      </RadioButtons>
+      <select id="material">
+        <option value='birch ply' >birch ply</option>
+        <option value='stainless steel' >stainless steel</option>
+        <option value='aluminium' >aluminium</option>
+        <option value='acrylic' >acrylic</option>
+      </select>
     </Field>
     <Field >
       <Label>Thickness</Label>
-      <NumberControl min={0.8} baseStep={0.4} round={0.1} />
+      <select id="thickness">
+        <option value='0.8mm'>0.8mm</option>
+        <option value='1.2mm'>1.2mm</option>
+        <option value='1.6mm'>1.6mm</option>
+        <option value='2.0mm'>2.0mm</option>
+      </select>
+    </Field>
+      <Field >
+      <h3> Price </h3>
     </Field>
   </Stack>;
 }
