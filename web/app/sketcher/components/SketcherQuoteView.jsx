@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useStreamWithUpdater} from "ui/effects";
 import Stack from "ui/components/Stack";
 import Label from "ui/components/controls/Label";
 import Field from "ui/components/controls/Field";
+import {SketcherAppContext} from "./SketcherAppContext";
 
 export function SketcherQuoteView() {
+
+	const ctx = useContext(SketcherAppContext);
+
+	const [objectsUpdate, setObjectsUpdate] = useStreamWithUpdater(ctx => ctx.viewer.streams.objectsUpdate);
 
   return <Stack >
     <Field >
@@ -28,8 +33,15 @@ export function SketcherQuoteView() {
         <option value='2.0mm'>2.0mm</option>
       </select>
     </Field>
-      <Field >
+    <Field >
+      <h3>Summary </h3>
+    </Field>
+    <Field >
+      <p>Length: </p> {Math.round(ctx.viewer.layers[1].objects.filter(o=>o.TYPE=="Segment").reduce((accumulator,o)=>accumulator+o.getLength(),0))}mm
+    </Field>
+    <Field >
       <h3> Price </h3>
+       <p>£{(Math.ceil(ctx.viewer.layers[1].objects.filter(o=>o.TYPE=="Segment").reduce((accumulator,o)=>accumulator+o.getLength(),0)/60)/100+10).toFixed(2)}</p>
     </Field>
   </Stack>;
 }
