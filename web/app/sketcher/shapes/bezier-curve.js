@@ -69,6 +69,17 @@ export class BezierCurve extends SketchObject {
     }
     return hero;
   }
+
+    // This is an approximation
+  getLength(){
+    let perim = 0;
+    perim = perim + Math.sqrt(Math.pow(this.a.x-this.cp1.x,2)+Math.pow(this.a.y-this.cp1.y,2));
+    perim = perim + Math.sqrt(Math.pow(this.cp1.x-this.b.x,2)+Math.pow(this.cp1.y-this.b.y,2));
+    perim = perim + Math.sqrt(Math.pow(this.b.x-this.cp2.x,2)+Math.pow(this.b.y-this.cp2.y,2));
+    perim = perim + Math.sqrt(Math.pow(this.cp2.x-this.a.x,2)+Math.pow(this.cp2.y-this.a.y,2));
+
+    return perim/2;
+  }
   
   drawImpl(ctx, scale, viewer) {
     ctx.beginPath();
