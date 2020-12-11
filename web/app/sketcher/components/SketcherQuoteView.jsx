@@ -11,7 +11,7 @@ export function SketcherQuoteView() {
 
 	const [objectsUpdate, setObjectsUpdate] = useStreamWithUpdater(ctx => ctx.viewer.streams.objectsUpdate);
 
-	const validShapes = new Set(['Segment', 'Circle', 'Arc', 'Ellipse'])
+	const validShapes = new Set(['Segment', 'Circle', 'Arc', 'Ellipse', 'EllipticalArc'])
 
   return <Stack >
     <Field >
