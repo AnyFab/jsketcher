@@ -88,6 +88,14 @@ export class Ellipse extends SketchObject {
     const L = this.radiusAtAngle(polarPoint.angle);
     return Math.abs(polarPoint.radius - L);
   }
+
+  // This is the Ramanujan approximation. There's no closed form solution
+  getLength(){
+    let a = this.rx.get();
+    let b = this.ry.get();
+
+    return Math.PI*(3*(a+b)-Math.sqrt((3*a+b)*(a+3*b)))
+  }
   
   static findMinorRadius(majorRadius, pntRadius, pntAngle) {
     return Math.abs( Math.sin(pntAngle) /  Math.sqrt(1 / sq(pntRadius) - sq(Math.cos(pntAngle) / majorRadius)) );
