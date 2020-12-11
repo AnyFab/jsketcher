@@ -154,6 +154,10 @@ export class Arc extends SketchObject {
       );
     }
   }
+
+  getLength(){
+    return this.r.get()*Math.abs(this.getEndAngle()-this.getStartAngle());
+  }
   
   stabilize(viewer) {
     this.syncGeometry();
