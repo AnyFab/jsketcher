@@ -57,12 +57,12 @@ export class EllipticalArc extends Ellipse {
     return Math.atan2(yy, xx);
   }
 
-  // I'm just using an approximation to the whole ellipse here
+  // I'm just using an approximation here
   getLength(){
     let a = this.rx.get();
     let b = this.ry.get();
 
-    return Math.PI*(3*(a+b)-Math.sqrt((3*a+b)*(a+3*b)))
+    return Math.PI*(3*(a+b)-Math.sqrt((3*a+b)*(a+3*b)))-Math.sqrt(Math.pow(this.a.x-this.b.x,2)+Math.pow(this.a.y-this.b.y,2));
   }
 
   write() {
