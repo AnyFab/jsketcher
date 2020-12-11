@@ -11,6 +11,8 @@ export function SketcherQuoteView() {
 
 	const [objectsUpdate, setObjectsUpdate] = useStreamWithUpdater(ctx => ctx.viewer.streams.objectsUpdate);
 
+	const validShapes = new Set(['Segment', 'Circle'])
+
   return <Stack >
     <Field >
       <h3> Materials </h3>
@@ -37,11 +39,11 @@ export function SketcherQuoteView() {
       <h3>Summary </h3>
     </Field>
     <Field >
-      <p>Length: </p> {Math.round(ctx.viewer.layers[1].objects.filter(o=>o.TYPE=="Segment").reduce((accumulator,o)=>accumulator+o.getLength(),0))}mm
+      <p>Length: </p> {Math.round(ctx.viewer.layers[1].objects.filter(o=>validShapes.has(o.TYPE)).reduce((accumulator,o)=>accumulator+o.getLength(),0))}mm
     </Field>
     <Field >
       <h3> Price </h3>
-       <p>£{(Math.ceil(ctx.viewer.layers[1].objects.filter(o=>o.TYPE=="Segment").reduce((accumulator,o)=>accumulator+o.getLength(),0)/60)/100+10).toFixed(2)}</p>
+       <p>£{(Math.ceil(ctx.viewer.layers[1].objects.filter(o=>validShapes.has(o.TYPE)).reduce((accumulator,o)=>accumulator+o.getLength(),0)/60)/100+10).toFixed(2)}</p>
     </Field>
   </Stack>;
 }

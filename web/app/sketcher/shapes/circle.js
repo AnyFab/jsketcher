@@ -42,6 +42,10 @@ export class Circle extends SketchObject {
     return Math.abs(distance(aim.x, aim.y, this.c.x, this.c.y) - this.r.get());
   }
 
+  getLength(){
+    return 2*Math.PI*this.r.get();
+  }
+
   copy() {
     const circle = new Circle(this.c.copy());
     circle.r.set(this.r.get());
