@@ -13,7 +13,8 @@ export function activate(ctx) {
   }
 
   function getQuote() {
-    exportTextData(toStlAsciiString(), ctx.projectService.id + ".stl");
+    return {id: "test", data:toStlAsciiString()};
+    // TODO: POST this value as JSON to http://34.89.79.125:8000/slice, then display the results
   }
   
   function imagePng() {
