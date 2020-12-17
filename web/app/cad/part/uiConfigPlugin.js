@@ -22,7 +22,7 @@ export function activate({services, streams}) {
   ];
 
   streams.ui.toolbars.headsUp.value = STANDARD_MODE_HEADS_UP_TOOLBAR;
-  streams.ui.toolbars.headsUpQuickActions.value = ['Save', 'StlExport'];
+  streams.ui.toolbars.headsUpQuickActions.value = ['Save', 'StlExport', 'GetQuote'];
   
   services.action.registerActions(CoreActions);
   services.action.registerActions(OperationActions);

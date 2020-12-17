@@ -11,6 +11,10 @@ export function activate(ctx) {
   function stlAscii() {
     exportTextData(toStlAsciiString(), ctx.projectService.id + ".stl");
   }
+
+  function getQuote() {
+    exportTextData(toStlAsciiString(), ctx.projectService.id + ".stl");
+  }
   
   function imagePng() {
     let auxVisible = ctx.services.cadScene.auxGroup.visible;
@@ -38,6 +42,6 @@ export function activate(ctx) {
   }
   
   ctx.services.export = {
-    stlAscii, imagePng, toStlAsciiString, nativeFormat
+    stlAscii, getQuote, imagePng, toStlAsciiString, nativeFormat
   };
 }

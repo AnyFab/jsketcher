@@ -46,6 +46,16 @@ export default [
     },
     invoke: (context) => context.services.export.stlAscii()
   },
+
+  {
+    id: 'GetQuote',
+    appearance: {
+      cssIcons: ['upload', 'flip-vertical'],
+      label: 'Get Quote',
+      info: 'Get Quote',
+    },
+    invoke: (context) => context.services.export.getQuote()
+  },
   
   {
     id: 'ImagePngExport',
