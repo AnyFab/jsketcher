@@ -12,7 +12,7 @@ export default function (objects) {
 
   let output = '';
 
-  output += 'solid exported ';
+  output += 'solid exported\n';
 
   objects.forEach(object => {
 
@@ -40,8 +40,8 @@ export default function (objects) {
 
           vector.copy(face.normal).applyMatrix3(normalMatrixWorld).normalize();
 
-          output += '\tfacet normal ' + vector.x + ' ' + vector.y + ' ' + vector.z + ' ';
-          output += '\t\touter loop ';
+          output += '\tfacet normal ' + vector.x + ' ' + vector.y + ' ' + vector.z + '\n';
+          output += '\t\touter loop\n';
 
           let indices = [face.a, face.b, face.c];
 
@@ -49,12 +49,12 @@ export default function (objects) {
 
             vector.copy(vertices[indices[j]]).applyMatrix4(matrixWorld);
 
-            output += '\t\t\tvertex ' + vector.x + ' ' + vector.y + ' ' + vector.z + ' ';
+            output += '\t\t\tvertex ' + vector.x + ' ' + vector.y + ' ' + vector.z + '\n';
 
           }
 
-          output += '\t\tendloop ';
-          output += '\tendfacet ';
+          output += '\t\tendloop\n';
+          output += '\tendfacet\n';
 
         }
 
@@ -63,6 +63,6 @@ export default function (objects) {
     }
 
   });
-  output += 'endsolid exported ';
+  output += 'endsolid exported\n';
   return output;
 }
